@@ -14,11 +14,16 @@ Then download the site. Save it as `index.html`. A folder will be generated cont
 
 If you are using XAMMP, place `index.html` and the `index_files` folder in a subfolder under `C:\xampp\htdocs`. You can name that subfolder anything but I will name it the same name as the original (e.g. `e20230724music`). 
 
-Rename the .js files from `*.js.download` to `*.js`. There will be files like `main.js(1).download`. You can rename it to `main.1.js`
+Rename the .js files from `*.js.download` to `*.js`. There will be files like `main.js(1).download`. You can rename it to `main.1.js`. Don't forget to rename them in your `index.html` as well.
+
+Move the `styles_...css` file up one folder, so that it is in the same path as `index.html`, and then change its href accordingly. Our CSS needs to access files relative to the current page. You could also just use relative paths that go up one level in your CSS. Pick your poison.
+```html
+<link href="./styles_cdbbac6bc87507f78368.css" rel="stylesheet" />
+```
 
 Copy all files in this repo's `tools` folder to your project's folder. To be clear, `.htaccess` should be in the same folder as `index.html`
 
-Rename `index.html` to `index.php`. Place this at the top:
+Rename `index.html` to `index.php`. Place this at the top. There's some code that absolutely needs that parameter filled or else it won't load.
 ```php
 <?php
 if (!isset($_GET['authkey'])) {    
